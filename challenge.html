@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Module 6</title>
+
+    <meta name="description" content="Index for module 6.">
+    <meta name="keywords" content="">
+    <meta name="author" content="Linda DuHadway, Douglas Hall">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/3d_printing.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+    <ul>
+        <li><a href="running.html">Trail Running</a></li>
+        <li><a href="box_model.html">CSS Box Model</a></li>
+        <li><a href="challenge.html">3D Printing</a></li>
+    </ul>
+
+    <h1>3D Printing</h1>
+
+    <p>Let's have a look at high-level steps to get from a model to a 3D printed
+        part. The steps necessary are roughly as follows.</p>
+
+    <h2>Slicing</h2>
+
+    <p><abbr title="Fused Deposition Modeling">FDM</abbr> 3D printers are one of
+        several methods for additive manufacturing, and print parts layer by
+        layer, advancing in height with each layer. "Slicing" takes a model, and
+        parameters specific to the printer and filament as input, and produces a
+        set of instructions necessary for the printer to create the part
+        layer-by-layer.
+    </p>
+
+    <p>We'll use <a
+           href="https://github.com/SoftFever/OrcaSlicer">OrcaSlicer</a>, an
+        open-source slicer, and some profiles specific
+        to my printer and the filament I'll be printing the part in. The part is
+        an adapter between an M20 thread on a GNSS antenna to a 1/4-20 heatset
+        insert for mounting on a tripod. Since I have profiles tuned to my
+        printer and the <a
+           href="https://us.store.bambulab.com/products/asa-cf">black ASA-CF</a>
+        I'll be printing it in, it's as simple
+        as opening the model in OrcaSlicer and hitting "Slice plate."</p>
+
+    <figure>
+        <img src="resources/model.webp" alt="OrcaSlicer showing a model."
+             width="600" height="468">
+        <figcaption>Figure 1. Model preview before slicing.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="resources/sliced.webp"
+             alt="OrcaSlicer showing a sliced model ready for printing."
+             width="600" height="468">
+        <figcaption>Figure 2. Sliced model, colored by line type.</figcaption>
+    </figure>
+
+    <h2>Printing</h2>
+
+    <div>
+        <figure>
+            <a href="https://github.com/VoronDesign/Voron-Trident"><img
+                     src="resources/printer.webp"
+                     alt="Voron Trident 300m Printer" height="319"></a>
+            <figcaption>Figure 3. Voron Trident 300mm</figcaption>
+        </figure>
+
+        <p>We'll be printing the sliced part on a Voron Trident as pictured to
+            the left. This is an open-source printer design anybody can source
+            components for and build.</p>
+
+        <p>Before we can start the print, the printer needs to be warmed up.
+            We'll start by homing the printer in all three axes, move the bed to
+            a Z-height of 100mm so bed heats the chamber fairly evenly and
+            start heating the bed to 100&deg;C. Ideally the printer is allowed
+            to heat-soak for some time before printing to reduce thermal
+            expansion and part warping during the print. I've found a good rule
+            of thumb is that the printer is stable enough once the chamber
+            reaches 38&deg;C.</p>
+
+        <p>Once up to temperature the print can be started. We'll assume the
+            filament is sufficiently dry and no purging is necessary. The
+            printer runs through a series of steps as follows:</p>
+    </div>
+
+    <ol>
+        <li>Homing All Axes</li>
+        <li>Nozzle Scrub</li>
+        <li>Bed Level</li>
+        <li>Bed Mesh Height Map</li>
+        <li>Heat Hotend</li>
+        <li>Nozzle Scrub</li>
+        <li>Print Start</li>
+    </ol>
+
+    <p>Total cost and time for this print are approximately:</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <th scope="row">Total Filament:</th>
+                <td align="right">25.03 g</td>
+            </tr>
+            <tr>
+                <th scope="row">Filament Cost:</th>
+                <td align="right">$1.16</td>
+            </tr>
+            <tr>
+                <th scope="row">Print Time:</th>
+                <td align="right">1h 14m</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Once the print is complete, the heatset insert can be installed and we
+        have a finished part.</p>
+
+    <img src="resources/IMG_1568.webp" alt="Printed part bottom." width="400"
+         height="400">
+    <img src="resources/IMG_1571.webp" alt="Printed part top." width="400"
+         height="400">
+
+</body>
+
+</html>
